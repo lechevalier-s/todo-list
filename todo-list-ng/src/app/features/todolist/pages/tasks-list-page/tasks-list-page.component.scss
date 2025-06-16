@@ -1,0 +1,43 @@
+/* Positionnement du bouton Ajouter une tâche */
+.actions {
+  position: relative;
+}
+.add-task-button {
+  margin-bottom: 15px;
+  position: absolute;
+  right: 0;
+  mat-icon {
+    margin-right: 12px !important;
+    margin-bottom: 3px;
+  }
+}
+/* Icône de chargement */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+/* Label */
+.checked {
+  color: green;
+  margin-bottom: -3px;
+}
+/* Etat */
+mat-form-field {
+  margin-bottom: -1.5em;
+}
+/* Boutons dans le tableau */
+td.details, td.supprimer {
+  text-align: center;
+}
+mat-option.completed:hover {
+  background-color: lightgreen;
+}
+mat-option.not-completed:hover {
+  background-color: lightcoral;
+}
+/* Ligne d'une tâche terminée */
+tr.completed > td {
+  background-color: lightgray;
+}

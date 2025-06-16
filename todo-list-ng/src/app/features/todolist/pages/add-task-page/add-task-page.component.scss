@@ -1,0 +1,31 @@
+.add-task-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Espace entre les boutons */
+    margin-top: 20px;
+  }
+}
+
+/* Icône de chargement */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
