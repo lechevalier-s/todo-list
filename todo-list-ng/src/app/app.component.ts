@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TasksListPageComponent } from "./features/todo/pages/tasks-list-page/tasks-list-page.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TasksListPageComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
