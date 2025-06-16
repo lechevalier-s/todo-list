@@ -1,0 +1,26 @@
+div.container {
+  padding: 15px 20px;
+
+  mat-dialog-actions {
+    justify-content: flex-end;
+  }
+}
+
+.error {
+  text-align: center;
+  font-size: 1.5rem;
+
+  mat-icon {
+    font-size: 3rem !important;
+    margin-right: 20px !important;
+    color: darkred;
+    width: 3rem !important;
+    height: 3rem !important;
+    vertical-align: middle;
+  }
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+}

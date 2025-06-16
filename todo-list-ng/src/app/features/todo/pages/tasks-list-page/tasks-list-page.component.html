@@ -1,0 +1,95 @@
+<h1>Liste de tâches à faire</h1>
+
+<div class="actions">
+  <!-- Bouton de filtre des tâches -->
+  @if (errorMessage === null){
+    <mat-button-toggle-group name="filter" aria-label="Filtrer les tâches" [ngModel]="filter"
+        [hideSingleSelectionIndicator]="true" (ngModelChange)="toggleFilter($event)">
+      <mat-button-toggle [value]=false>Toutes</mat-button-toggle>
+      <mat-button-toggle [value]=true>A faire</mat-button-toggle>
+    </mat-button-toggle-group>
+  }
+  <!-- Bouton d'ajout d'une nouvelle tâche -->
+  <button mat-flat-button color="primary" class="add-task-button" aria-label="Ajouter une tâche" (click)="displayAddTaskForm()">
+    <mat-icon>add</mat-icon> Ajouter une tâche
+  </button>
+</div>
+
+@if (errorMessage === null){
+<div>
+
+  <!-- Tableau contenant la liste des tâches -->
+  <table mat-table [dataSource]="displayedTasks" class="mat-elevation-z8">
+
+    <!-- Colonne Label -->
+    <ng-container matColumnDef="label">
+      <th mat-header-cell *matHeaderCellDef> Label </th>
+      <td mat-cell *matCellDef="let task">
+        @if (task.completed){
+          <mat-icon class="checked">check</mat-icon>
+        }
+        {{ task.label }}
+      </td>
+    </ng-container>
+
+    <!-- Colonne Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let task">{{ task.description }}</td>
+    </ng-container>
+
+    <!-- Colonne Statut -->
+    <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef> Statut </th>
+      <td mat-cell *matCellDef="let task">
+         <mat-form-field>
+          <mat-select matNativeControl [(ngModel)]="task.completed" (selectionChange)="updateTask(task)">
+            <mat-option [value]=true class="completed">{{ getStatus(true) }}</mat-option>
+            <mat-option [value]=false class="not-completed">{{ getStatus(false) }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <!-- Colonne Détails -->
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task" class="details">
+        <button mat-flat-button color="primary" aria-label="Détails de la tâche" (click)="onDetailsTaskClick(task)">
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Colonne Supprimer -->
+    <ng-container matColumnDef="supprimer">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task" class="supprimer">
+        <button mat-flat-button color="warn" aria-label="Supprimer la tâche" (click)="onDeleteTaskClick(task.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let task; columns: displayedColumns;" [ngClass]="{'completed': task.completed}"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator [length]=pagination!.length [pageSize]="pageSizeDef" [pageSizeOptions]="[10, 50, 100]" aria-label="Pagination"
+    (page)="changePagination($event)" [pageIndex]="pagination.idxPage">
+  </mat-paginator>
+
+</div>
+}
+@else {
+  <!-- Message d'erreur -->
+  <app-error-message [message]="errorMessage"></app-error-message>
+}
+
+<!-- Affichage d'une icône de chargement -->
+@if (loading){
+  <div class="loading">
+    <img src="loading.gif"/>
+  </div>
+}

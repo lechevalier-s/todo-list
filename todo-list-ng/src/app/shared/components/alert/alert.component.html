@@ -1,0 +1,12 @@
+<div mat-dialog-container class="container">
+  <h2 mat-dialog-title>Erreur !</h2>
+
+  <mat-dialog-content class="error">
+    <mat-icon>warning_amber</mat-icon>
+    <p>{{ message }}</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button (click)="onCloseClick()" cdkFocusInitial>Fermer</button>
+  </mat-dialog-actions>
+</div>

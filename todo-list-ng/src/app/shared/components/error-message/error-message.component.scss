@@ -1,0 +1,23 @@
+.error {
+  margin: auto;
+  padding: 35px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-align: center;
+  width: fit-content;
+  font-size: 1.5rem;
+
+  mat-icon {
+    font-size: 3rem !important;
+    margin-right: 20px !important;
+    color: darkred;
+    width: 3rem !important;
+    height: 3rem !important;
+    vertical-align: middle;
+  }
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+}
