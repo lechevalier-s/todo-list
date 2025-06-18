@@ -5,11 +5,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+import java.io.Serializable;
+
 @Data // Génère getters et setters
 @NoArgsConstructor  // Génère un constructeur sans argument
 @AllArgsConstructor // Génère un constructeur avec tous les arguments
 @EqualsAndHashCode(of = {"id"}) // Génère les méthodes equals et hashCode basées sur l'id uniquement
-public class Task {
+public class Task implements Serializable {
 
     private Long id;
     private String label;
